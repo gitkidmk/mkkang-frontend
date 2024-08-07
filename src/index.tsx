@@ -19,7 +19,6 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <LoginPage/>,
-        errorElement: <ErrorPage errorCode={400}/>
     },
     {
         path: "/main",
@@ -36,6 +35,22 @@ const router = createBrowserRouter([
     {
         path: "/admin",
         element: <AdminPage/>,
+    },
+    {
+        path: "/error",
+        element: <ErrorPage errorCode={403}/>,
+        errorElement: <ErrorPage errorCode={500}/>,
+        children: [
+            {
+                path: "403",
+                element: <ErrorPage errorCode={403}/>,
+            },
+            {
+                path: "4xx",
+                element: <ErrorPage errorCode={400}/>,
+            },
+        ],
+
     },
 ]);
 
