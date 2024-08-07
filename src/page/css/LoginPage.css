@@ -1,0 +1,73 @@
+.App {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+.OuterButton {
+  position: absolute;
+  top: calc(50% - 125px);
+  left: calc(50% - 125px);
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  background-color: #ffffff;
+}
+
+.MainButton {
+  position: absolute;
+  top: calc(50% - 120px);
+  left: calc(50% - 120px);
+  border-radius: 50%;
+  width: 240px;
+  height: 240px;
+  background-color: #000000;
+  transition: transform 1s, width 0.5s, height 0.5s, top 0.5s, left 0.5s;
+}
+
+.Title {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 200px;
+  font-size: 3em;
+  transition: transform 1s, font-size 0.5s;
+}
+
+
+.MainButton:hover {
+  cursor: pointer;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 300px;
+}
+
+.MainButton:hover .Title {
+  cursor: pointer;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+  width: 300px;
+  height: 300px;
+  font-size: 10em;
+}
+
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*  .App-logo {*/
+/*    animation: App-logo-spin infinite 20s linear;*/
+/*  }*/
+/*}*/
+
+/*@keyframes App-logo-spin {*/
+/*  from {*/
+/*    transform: rotate(0deg);*/
+/*  }*/
+/*  to {*/
+/*    transform: rotate(360deg);*/
+/*  }*/
+/*}*/

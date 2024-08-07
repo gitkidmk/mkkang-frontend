@@ -1,0 +1,32 @@
+.out {
+    text-align: center;
+    margin-right: 20px;
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform 1s;
+}
+
+.out:hover {
+    transform: rotate(90deg);
+}
+.link-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    height: 80vh;
+    justify-content: space-evenly;
+}
+
+.link {
+    color: grey;
+    font-size: 5em;
+    text-decoration: none;
+    text-align: center;
+    height: 100px;
+    transition: linear font-size 0.2s;
+}
+
+.link:hover {
+    color: white;
+    font-size: 5.2em;
+}
