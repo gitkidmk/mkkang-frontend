@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 export default function ErrorPage(props: { errorCode: number; }) {
     const [message, setMessage] = useState("")
     const errorCode = props.errorCode;
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (errorCode === 403) {
@@ -14,12 +16,21 @@ export default function ErrorPage(props: { errorCode: number; }) {
         }
     },[])
 
-    // TODO: 메인으로 돌아가기 버튼!
+    const goToMain = () => {
+        navigate("/main");
+    }
+
+    const goToLogin = () => {
+        navigate("/");
+    }
 
     return (
         <div id="error-page">
             <h1>Oops!</h1>
             <p>{message}</p>
+            {errorCode === 500 ?
+                <button onClick={() => goToLogin()}>go to login page</button>:
+                <button onClick={() => goToMain()}>go to main page</button>}
         </div>
     );
 }

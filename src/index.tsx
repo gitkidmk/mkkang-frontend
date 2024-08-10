@@ -12,6 +12,7 @@ import AnyPage from "./page/AnyPage";
 import FamilyPage from "./page/FamilyPage";
 import AdminPage from "./page/AdminPage";
 import LoginPage from "./page/LoginPage";
+import ErrorPageTemplate from "./page/ErrorPageTemplate";
 
 const root = document.getElementById("root") as HTMLElement;
 
@@ -38,9 +39,12 @@ const router = createBrowserRouter([
     },
     {
         path: "/error",
-        element: <ErrorPage errorCode={403}/>,
-        errorElement: <ErrorPage errorCode={500}/>,
+        element: <ErrorPageTemplate/>,
         children: [
+            {
+                path: "500",
+                element: <ErrorPage errorCode={500}/>
+            },
             {
                 path: "403",
                 element: <ErrorPage errorCode={403}/>,
@@ -48,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path: "4xx",
                 element: <ErrorPage errorCode={400}/>,
-            },
+            }
         ],
 
     },

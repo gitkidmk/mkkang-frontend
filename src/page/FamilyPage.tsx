@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {tableSource} from "../const";
 import axios from "../axios";
-import {redirect, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {tableSource} from "../const";
 
 function FamilyPage() {
     const [source, setSource] = useState([tableSource[0]]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -14,16 +15,18 @@ function FamilyPage() {
             )
             .catch(e => {
                 if(e.response.status === 403) {
-                    // go to 권한 부족 error page
-                    // return redirect('/error');
                     navigate("/error/403");
                 } else {
-                    // go to normal error page
-                    // return redirect('/error');
-                    navigate("/error/4xx");
+                    navigate("/error/500");
                 }
             })
+            .finally(() =>
+                setLoading(false))
     },[])
+
+    if(loading) {
+        return <></>
+    }
 
     return (
         <table>
@@ -35,7 +38,8 @@ function FamilyPage() {
                 <th>Role</th>
             </tr>
             {source.map((source, index) => {
-                return(<tr>
+                return(
+                <tr key={index}>
                     <td>{index + 1}</td>
                     <td><img alt={"profile"} src={source.profile}/></td>
                     <td>{source.email}</td>
