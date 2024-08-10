@@ -1,13 +1,9 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-
-// const csrfToken = document.querySelector('meta[name="_csrf"]').content;
-
 axios.defaults.withXSRFToken = true;
 axios.defaults.xsrfCookieName = 'XSRF-TOKEN';
 axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
-// axios.defaults.headers = {
-//     "X-CSRF-TOKEN": csrfToken
-// }
+
+process.env.NODE_ENV === "production" && (axios.defaults.baseURL = process.env.REACT_APP_PRD_BASE_URL);
 
 export default axios;

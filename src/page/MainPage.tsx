@@ -12,7 +12,6 @@ function MainPage() {
     const logout = () => {
         axios.post("/logout")
             .then( response => {
-                console.log(response);
                 setLogoutResult(response.data);
                 // TODO: router로 전환?
                 // csrf 설정 넣으니까 자꾸 막힘...

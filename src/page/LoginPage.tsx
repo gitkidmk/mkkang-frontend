@@ -6,9 +6,12 @@ import axios from "../axios";
 function LoginPage() {
 
     const login = () => {
+        const loginBaseUrl = process.env.NODE_ENV === "production" ?
+            process.env.REACT_APP_PRD_LOGIN_BASE_URL:
+            process.env.REACT_APP_DEV_LOGIN_BASE_URL;
         axios('/login')
             .then( response => {
-                window.open("http://localhost:8080/oauth2/authorization/google", "_self");
+                window.open(loginBaseUrl + "/oauth2/authorization/google", "_self");
             })
     }
 
