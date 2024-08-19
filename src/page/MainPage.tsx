@@ -10,7 +10,7 @@ function MainPage() {
     const [cookies, , ] = useCookies(["role"]);
     const [logoutResult, setLogoutResult] = useState("");
     const logout = () => {
-        axios.post("/logout")
+        axios.get("/logout")
             .then( response => {
                 setLogoutResult(response.data);
                 // TODO: router로 전환?
@@ -33,7 +33,7 @@ function MainPage() {
             </div>
             <p
                 className={"out"}
-                onClick={() => logout()}>✖︎︎</p>
+                onClick={logout}>✖︎︎</p>
         </>
     );
 }

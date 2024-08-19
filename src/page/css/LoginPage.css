@@ -40,6 +40,20 @@
 }
 
 
+.Title2 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: calc(50% - 10px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 400px;
+  font-size: 3em;
+  transition: transform 1s, font-size 0.5s;
+}
+
+
 .MainButton:hover {
   cursor: pointer;
   top: calc(50% - 150px);
