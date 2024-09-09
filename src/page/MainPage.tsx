@@ -1,14 +1,31 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import './css/Mainpage.css';
 import axios from "../axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 // TODO: access-token (http-only여서... 접근 불가)이 존재하면 main 페이지로 바로
 // 따라서 role 이 존재하면 보내보기, role은 5분 살아있기
 
 function MainPage() {
     const [cookies, , ] = useCookies(["role"]);
     const [logoutResult, setLogoutResult] = useState("");
+    const loginBaseUrl = process.env.REACT_APP_LOGIN_BASE_URL;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get("/main")
+            .then(res => {
+                console.log(res);
+                // window.open(loginBaseUrl + "/oauth2/authorization/google", "_self");
+            })
+            .catch(e => {
+                console.log(e);
+                console.log(e.response);
+                console.log(e.response.status); // 500
+                navigate("/error/500");
+            })
+    }, []);
+
     const logout = () => {
         axios.get("/logout")
             .then( response => {
