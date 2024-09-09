@@ -24,8 +24,6 @@ function LoginPage() {
             <div className="MainButton">
                 <div className="Title"
                      onClick={() => login()}>IN</div>
-                <div className="Title2"
-                    onClick={redisTest}> TEST </div>
             </div>
         </div>
     );
